@@ -1,0 +1,80 @@
+import {
+  LayoutDashboard,
+  Ticket,
+  Hammer,
+  LockKeyhole,
+  MessageCircleCode,
+  Award,
+  Building2,
+  UsersRound,
+  Gamepad2,
+} from "lucide-react";
+
+export const overviewItems = [
+  {
+    title: "Dashboard",
+    url: "/dashboard",
+    icon: LayoutDashboard,
+    permission: "view_main",
+  },
+];
+
+export const ticketingItems = [
+  {
+    title: "Departments",
+    url: "/departments",
+    icon: Building2,
+    permission: "view_departments",
+  },
+  {
+    title: "Services",
+    url: "/services",
+    icon: Hammer,
+    permission: "view_departments",
+  },
+  {
+    title: "Tickets",
+    url: "/tickets",
+    icon: Ticket,
+    permission: "view_main",
+  },
+];
+
+export const queueItems = [
+  {
+    title: "Queue",
+    url: "/queue",
+    icon: UsersRound,
+    permission: "view_main",
+  },
+  {
+    title: "Queue Controller",
+    url: "/queue-controller",
+    icon: Gamepad2,
+    permission: "view_main",
+  },
+];
+
+export const userManagementItems = [
+  {
+    title: "Access Control",
+    url: "/access-control",
+    icon: LockKeyhole,
+    permission: "view_main",
+  },
+];
+
+export const clientSatisfactionItems = [
+  {
+    title: "Client Feedback",
+    url: "/client-feedbacks",
+    icon: MessageCircleCode,
+    permission: "view_main",
+  },
+  {
+    title: "SQD",
+    url: "/service-quality-dimensions",
+    icon: Award,
+    permission: "view_sqd",
+  },
+];

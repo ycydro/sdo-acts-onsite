@@ -1,0 +1,22 @@
+import React from "react";
+import LoginPage from "@/pages/LoginPage";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRoutes from "./routes/AppRoutes";
+import { AuthProvider } from "./context/AuthContext";
+
+const queryClient = new QueryClient();
+
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
+      </Router>
+    </QueryClientProvider>
+  );
+}
+
+export default App;
