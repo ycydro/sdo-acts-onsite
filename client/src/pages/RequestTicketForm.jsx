@@ -81,7 +81,7 @@ const RequestTicketForm = () => {
 
   // Find the selected service object
   const selectedService = services?.data?.find(
-    (service) => service.id === selectedServiceId
+    (service) => service.id === selectedServiceId,
   );
 
   // calculate processing time when service is selected
@@ -110,7 +110,8 @@ const RequestTicketForm = () => {
   const onSubmit = async (data) => {
     const submitData = {
       ...data,
-      scheduled_date: null,
+      scheduled_date: new Date().setHours(8, 0, 0, 0),
+      confirmation_date: new Date(),
       client_id: user.id,
       is_online: false,
     };
@@ -138,16 +139,16 @@ const RequestTicketForm = () => {
           className={cn(
             "w-full justify-between border-input hover:bg-inherit hover:text-muted-foreground",
             !field.value && "text-muted-foreground",
-            isServicesLoading && "opacity-50 cursor-not-allowed"
+            isServicesLoading && "opacity-50 cursor-not-allowed",
           )}
           disabled={isServicesLoading}
         >
           {isServicesLoading
             ? "Loading services..."
             : field.value
-            ? services?.data?.find((service) => service.id === field.value)
-                ?.name || "Select a service"
-            : "Select a service"}
+              ? services?.data?.find((service) => service.id === field.value)
+                  ?.name || "Select a service"
+              : "Select a service"}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -169,16 +170,16 @@ const RequestTicketForm = () => {
           className={cn(
             "w-full justify-between truncate border-input hover:bg-inherit hover:text-muted-foreground",
             !field.value && "text-muted-foreground",
-            isServicesLoading && "opacity-50 cursor-not-allowed"
+            isServicesLoading && "opacity-50 cursor-not-allowed",
           )}
           disabled={isServicesLoading}
         >
           {isServicesLoading
             ? "Loading services..."
             : field.value
-            ? services?.data?.find((service) => service.id === field.value)
-                ?.name || "Select a service"
-            : "Select a service"}
+              ? services?.data?.find((service) => service.id === field.value)
+                  ?.name || "Select a service"
+              : "Select a service"}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </DrawerTrigger>
@@ -238,7 +239,9 @@ const RequestTicketForm = () => {
                     <Check
                       className={cn(
                         "mr-2 h-4 w-4 text-primary",
-                        field.value === service.id ? "opacity-100" : "opacity-0"
+                        field.value === service.id
+                          ? "opacity-100"
+                          : "opacity-0",
                       )}
                     />
                     <div className="flex flex-col items-start flex-1">
@@ -254,14 +257,14 @@ const RequestTicketForm = () => {
                         Est. time:{" "}
                         {formatTimeDisplay(
                           convertMinutesToTimeParts(
-                            service.processing_time_in_minutes
+                            service.processing_time_in_minutes,
                           ).days,
                           convertMinutesToTimeParts(
-                            service.processing_time_in_minutes
+                            service.processing_time_in_minutes,
                           ).hours,
                           convertMinutesToTimeParts(
-                            service.processing_time_in_minutes
-                          ).minutes
+                            service.processing_time_in_minutes,
+                          ).minutes,
                         )}
                       </div>
                     )}
@@ -312,7 +315,7 @@ const RequestTicketForm = () => {
                 {formatTimeDisplay(
                   processingTime.days,
                   processingTime.hours,
-                  processingTime.minutes
+                  processingTime.minutes,
                 )}
               </span>
             </div>
